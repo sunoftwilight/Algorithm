@@ -10,4 +10,7 @@ for test_case in range(1, T + 1):
         
     avg = round(sum/10)
     
+    # avg = round(sum(list1)/10)  
+    # => sum을 이용해 list를 한번에 합할 수 있음.
+    
     print(f"#{test_case} {avg}")
