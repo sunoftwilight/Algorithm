@@ -15,26 +15,22 @@ for test_case in range(1, T + 1):
     false_case = f"#{test_case} -1"
     
     if year > 0 :
-        if 1 <= month <= 12:
-            if month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12:
-                if 1<= day <= 31:
+        if month in [1, 3, 5, 7, 8, 10, 12]:
+            if day in range(1, 32):
                     print(true_case)
-                else : 
+            else : 
                     print(false_case)
-            elif month == 2:
-                if 1<= day <= 28:
+        elif month == 2:
+            if day in range(1, 29):
                     print(true_case)
-                else:
-                    print(false_case)
-            elif month == 4 or month == 6 or month == 9 or month == 11:
-                if 1<= day <= 30:
-                    print(true_case)
-                else :
-                    print(false_case)
             else:
-                print(false_case)
+                    print(false_case)
+        elif month in [4, 6, 9,11]:
+            if day in range(1,31):
+                    print(true_case)
+            else :
+                    print(false_case)
         else:
-            print(false_case)
+                print(false_case)
     else:
-        print(false_case)
-    
+            print(false_case)
