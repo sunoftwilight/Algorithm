@@ -1,3 +1,5 @@
+# import sys; sys.stdin = open('view_input.txt')
+
 for test_case in range(1, 11):
     N = int(input())
     heights = list(map(int, input().split()))
