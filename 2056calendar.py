@@ -33,4 +33,8 @@ for test_case in range(1, T + 1):
         else:
                 print(false_case)
     else:
+<<<<<<< HEAD
             print(false_case)
+=======
+            print(false_case)
+>>>>>>> 31df4c5b2a9ea8c9bef00125dcc22d8b46c90a56
