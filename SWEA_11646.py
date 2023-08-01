@@ -11,7 +11,6 @@ for test_case in range(1, T+1):
 
     max_sum = min_sum = sum_init
 
-
     for i in range(N-(M-1)):
         sum = 0
         for k in range(M):
