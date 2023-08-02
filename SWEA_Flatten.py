@@ -3,10 +3,10 @@
 T = 10
 
 for tc in range(1, T+1):
-    N = int(input())
+    N = int(input())                         # dump 횟수
     box = list(map(int, input().split()))
 
-    for _ in range(N) :
+    for _ in range(N):
         max_h = min_h = box[0]
         max_idx = min_idx = 0
 
@@ -34,4 +34,3 @@ for tc in range(1, T+1):
     ans = last_max - last_min
 
     print(f'#{tc} {ans}')
-
