@@ -8,7 +8,7 @@ for tc in range(1, T+1):
 
     for i in range(N-(M-1)):
         for j in range(N-(M-1)):
-            total = 0
+            total = 0                # 구간 별 파리채에 죽은 파리 수
             for k in range(M):
                 for m in range(M):
                     total += arr[i+k][j+m]

@@ -34,10 +34,10 @@ for tc in range(1, T+1):
         sum_right += arr[k][(N-1)-k]
     of_sum.append(sum_right)
 
-    #sum_sort = sorted(of_sum)
+    # sum_sort = sorted(of_sum)
 
     max_sum = 0
-    for ms in of_sum :
+    for ms in of_sum:
         if max_sum < ms:
             max_sum = ms
 
