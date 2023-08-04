@@ -29,7 +29,7 @@ for tc in range(1, T + 1):
     red = set(red)
     blue = set(blue)
 
-    for search in red:
+    for search in red:                 # set은 &를 통해서 공통된 것 추출 가능
         if search in blue:
             cnt += 1
 
