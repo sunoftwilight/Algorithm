@@ -25,4 +25,4 @@ for tc in range(1, T+1):
     for stop_num in chk_bus_stop:
         ans.append(cnt[stop_num])
 
-    print(f'#{tc}', *chk_bus_stop)
+    print(f'#{tc}', *ans)
