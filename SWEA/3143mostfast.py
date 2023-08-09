@@ -10,7 +10,7 @@ for tc in range(1, T+1):
 
     while i < s and j < f:
         if s_txt[i] != f_txt[j]:
-            i = i -j
+            i = i - j
             j = -1
 
         i += 1
