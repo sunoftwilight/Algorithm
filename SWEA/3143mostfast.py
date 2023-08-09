@@ -6,18 +6,19 @@ for tc in range(1, T+1):
     s = len(s_txt)
 
     cnt = 0
+    i = j = 0
 
-    for i in range(s - f + 1):
-        crrt = 0
-        for j in range(f):
-            if s_txt[i + j] == f_txt[j]:
-                crrt += 1
-            else:
-                break
+    while i < s and j < f:
+        if s_txt[i] != f_txt[j]:
+            i = i -j
+            j = -1
 
-        if crrt == len(f_txt):
+        i += 1
+        j += 1
+
+        if j == f:
             cnt += 1
+            j = 0
 
     typing = cnt + (s - f * cnt)
-
     print(f'#{tc} {typing}')

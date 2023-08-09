@@ -9,12 +9,25 @@ for tc in range(1, T+1):
 
     cnt = 0
 
-    for i in range(s-f+1):
-        for j in range(f):
-            if s_txt[i + j] != f_txt[j]:
-                break
+    # for i in range(s-f+1):
+    #     for j in range(f):
+    #         if s_txt[i + j] != f_txt[j]:
+    #             break
+    #
+    #     else:
+    #         cnt += 1
+    i = j = 0
 
-        else:
+    while i < s and j < f:
+        if s_txt[i] != f_txt[j]:
+            i = i - j
+            j = -1
+
+        i += 1
+        j += 1
+
+        if j == f:
             cnt += 1
+            j = 0
 
     print(f'#{tc} {cnt}')
