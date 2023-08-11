@@ -5,7 +5,8 @@ def dfs(v):
 
     if v == B:         # 항상 하고 싶은 일은 여기에 선언해라!!! 밑에 탐색하다가 수행하지마!!!
         flag = 1
-        return
+        return         # return 후에 다시 시작 정점으로 차례로 돌아감
+                       # 만약 시작 점에 다른 가지가 있으면 그 가지도 모두 방문 후에 탐색 끝남
 
     for w in range(1, V+1):
         if adj[v][w] == 1 and visited[w] == 0:
