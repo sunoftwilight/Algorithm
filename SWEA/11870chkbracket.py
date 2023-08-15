@@ -3,7 +3,11 @@ T = int(input())
 for tc in range(1, T+1):
     txt = input()
 
+<<<<<<< HEAD
+    stack = [''] * len(txt)
+=======
     stack = []
+>>>>>>> 96daf56d281bc2410319eaeca716e58e4b7067ce
 
     flag = 1
 
@@ -21,7 +25,11 @@ for tc in range(1, T+1):
                 flag = 0
 
         elif txt[i] == '}':
+<<<<<<< HEAD
+            if stack[-1] == '{' and len(stack) > 0:
+=======
             if stack and stack[-1] == '{':
+>>>>>>> 96daf56d281bc2410319eaeca716e58e4b7067ce
                 stack.pop()
             else:
                 flag = 0
