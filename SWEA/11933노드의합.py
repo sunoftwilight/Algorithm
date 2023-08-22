@@ -4,10 +4,8 @@ def postorder(node):
     if node <= N:
         postorder(2*node)
         postorder(2*node + 1)
-
         sum_son += tree[node]
-        tree[node] = tree[node*2] + tree[node*2+1]
-        sum_son = 0
+        tree[node] = sum_son
 
 
 T = int(input())
