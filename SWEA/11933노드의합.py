@@ -1,11 +1,15 @@
-def postorder(node):
+def parents(node):
     global sum_son
 
-    if node <= N:
-        postorder(2*node)
-        postorder(2*node + 1)
-        sum_son += tree[node]
+    if 2 * node <= N:
+        sum_son += tree[2 * node]
+
+    if 2 * node + 1 <= N:
+        sum_son += tree[2 * node + 1]
+
+    if sum_son:
         tree[node] = sum_son
+    sum_son = 0
 
 
 T = int(input())
@@ -20,6 +24,8 @@ for tc in range(1, T+1):
         tree[node] = val
 
     sum_son = 0
-    postorder(1)
+
+    for i in range(N, 0, -1):
+        parents(i)
 
     print(f'#{tc} {tree[L]}')
