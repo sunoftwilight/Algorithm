@@ -8,7 +8,7 @@ for tc in range(1, T+1):
     dj = [1, 0, 1, -1]
 
     ans = "NO"
-
+    flag = 0
     for i in range(N):
         for j in range(N):
             if arr[i][j] == 'o':
@@ -31,5 +31,11 @@ for tc in range(1, T+1):
 
                     if cnt == 5:
                         ans = "YES"
+                        flag = 1
+                        break
+            if flag:
+                break
+        if flag:
+            break
 
     print(f'#{tc} {ans}')
