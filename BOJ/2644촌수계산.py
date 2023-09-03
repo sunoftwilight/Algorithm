@@ -1,17 +1,22 @@
-def dfs(a):
+def bfs(a):
     global cnt
     global flag
 
+    Q = [a]
     visited[a] = 1
-    cnt += 1
 
-    if a == B:
-        flag = 1
-        return
+    while Q:
+        a = Q.pop(0)
 
-    for w in range(1, N+1):
-        if adj[a][w] == 1 and visited[w] == 0:
-            dfs(w)
+        if a == B:
+            return visited[a] - 1
+
+        for w in range(1, N+1):
+            if adj[a][w] == 1 and visited[w] == 0:
+                Q.append(w)
+                visited[w] = visited[a] + 1
+
+    return -1
 
 
 N = int(input())
@@ -25,11 +30,4 @@ for _ in range(M):
     x, y = map(int, input().split())
     adj[x][y] = adj[y][x] = 1
 
-cnt = 0
-flag = -1
-dfs(A)
-
-if flag != -1:
-    flag = cnt
-
-print(flag)
+print(bfs(A))
