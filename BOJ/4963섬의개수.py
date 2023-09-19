@@ -1,4 +1,6 @@
-direction = [0, 1], [1, 0], [0, -1], [-1, 0]
+import sys; sys.setrecursionlimit(10**6)
+
+direction = [0, 1], [1, 1], [1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1]
 
 
 def dfs(i, j):
@@ -8,22 +10,26 @@ def dfs(i, j):
         ni = i + di
         nj = j + dj
 
-        if 0 <= ni < w and 0 <= nj < h and visited[ni][nj] != 0:
-            dfs(ni, nj)
+        if 0 <= ni < h and 0 <= nj < w:
+            if island[ni][nj] and visited[ni][nj] == 0:
+                dfs(ni, nj)
 
 
-# while list(map(int, input().split())) != [0, 0]:
 while True:
     w, h = map(int, input().split())
-    island = [list(map(int, input().split())) for _ in range(h)]
+    if w == 0 and h == 0:
+        break
 
-    visited = [[0] * w for _ in range(h)]
-    cnt = 0
+    else:
+        island = [list(map(int, input().split())) for _ in range(h)]
 
-    for i in range(w):
-        for j in range(h):
-            if island[i][j] and visited[i][j] == 0:
-                dfs(i, j)
-                cnt += 1
+        visited = [[0] * w for _ in range(h)]
+        cnt = 0
 
-    print(cnt)
+        for i in range(h):
+            for j in range(w):
+                if island[i][j] and visited[i][j] == 0:
+                    dfs(i, j)
+                    cnt += 1
+
+        print(cnt)
