@@ -17,7 +17,8 @@ def hoare_partition(a, l, r):
             j -= 1
 
         # pivot보다 큰 i와 pivot보다 작은 j를 찾았다면, i <-> j swap
-        if i < j: a[i], a[j] = a[j], a[i]
+        if i < j:
+            a[i], a[j] = a[j], a[i]
 
     # 이후 i > j가 되어 두 인덱스가 교차되었다면 pivot과 j의 값을 교환하여 pivot의 자리를 찾아줌
     a[l], a[j] = a[j], a[l]
