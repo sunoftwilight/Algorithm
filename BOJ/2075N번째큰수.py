@@ -1,9 +1,10 @@
 N = int(input())
-arr = [list(map(int, input().split())) for _ in range(N)]
+arr = []
 
-all = []
-for rows in arr:
-    rows.sort()
-    all += rows[N-5:N:-1]
+for i in range(N):
+    print(arr)
+    arr += list(map(int, input().split()))
+    arr.sort()
+    arr = arr[len(arr)-N:]
 
-print(all)
+print(arr[0])
