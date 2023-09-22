@@ -11,6 +11,9 @@ def dijkstra(x, y):
                     min_j = j
 
         visited[min_i][min_j] = 1
+        # 가지치기
+        if x == N-1 and y == N-1:
+            return
 
         direction = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 
@@ -19,10 +22,14 @@ def dijkstra(x, y):
             nj = min_j + dj
 
             if 0 <= ni < N and 0 <= nj < N:
-                diff = 1
+                diff = 1    # 경사도
+
                 if visited[ni][nj] == 0:
+
                     if arr[ni][nj] > arr[min_i][min_j]:
                         diff += arr[ni][nj] - arr[min_i][min_j]
+
+                    # 업데이트
                     if D[ni][nj] > D[min_i][min_j] + diff:
                         D[ni][nj] = D[min_i][min_j] + diff
 
@@ -47,9 +54,9 @@ for tc in range(1, T+1):
 #
 # def dijkstra(x, y):
 #     heap = []
-#     heapq.heappush(heap, (0, x, y))
-#
 #     D[x][y] = 0
+#
+#     heapq.heappush(heap, (D[x][y], x, y))
 #
 #     while heap:
 #         d, min_i, min_j = heapq.heappop(heap)
