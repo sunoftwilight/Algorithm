@@ -9,7 +9,7 @@ def solve(v):
 
         # 하고 싶은 일
         for w in adj_list[v]:
-            if visited[w] == 0:
+            if visited[w] == 0:       # if not visited[w]:
                 Q.append(w)
                 visited[w] = visited[v] + 1
 
