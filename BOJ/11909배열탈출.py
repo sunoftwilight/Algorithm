@@ -1,5 +1,5 @@
 import heapq
-direction = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+direction = [[0, 1], [1, 0]]
 
 
 def dijkstra(start, end):
@@ -10,17 +10,25 @@ def dijkstra(start, end):
     while heap:
         dist, now = heapq.heappop(heap)
 
-        if D[now[0]][now[1]] > dist:
+        if D[now[0]][now[1]] < dist:
             continue
 
-        if 1 <= now[0] and now[1] <= N:
-            for di, dj in direction[:2]:
-                ni = now[0] + di
-                nj = now[1] + dj
-
-        elif
+        for di, dj in direction:
+            ni = now[0] + di
+            nj = now[1] + dj
 
             if 0 <= ni < N and 0 <= nj < N:
+                if arr[now[0]][now[1]] > arr[ni][nj]:
+                    if D[ni][nj] > D[now[0]][now[1]]:
+                        D[ni][nj] = D[now[0]][now[1]]
+                        heapq.heappush(heap, (D[ni][nj], (ni, nj)))
+                else:
+                    cost = 1
+                    while arr[now[0]][now[1]] + cost <= arr[ni][nj]:
+                        cost += 1
+                    if D[ni][nj] > D[now[0]][now[1]] + cost:
+                        D[ni][nj] = D[now[0]][now[1]] + cost
+                        heapq.heappush(heap, (D[ni][nj], (ni, nj)))
 
 
 N = int(input())
