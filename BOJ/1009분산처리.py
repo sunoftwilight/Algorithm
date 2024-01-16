@@ -1,12 +1,30 @@
+rot = {
+    1: [1],
+    2: [2, 4, 8, 6],
+    3: [3, 9, 7, 1],
+    4: [4, 6],
+    5: [5],
+    6: [6],
+    7: [7, 9, 3, 1],
+    8: [8, 4, 2, 6],
+    9: [9, 1],
+    0: [0],
+}
+
 T = int(input())
 
-for test_case in range(1, T+1):
+for tc in range(1, T+1):
     a, b = map(int, input().split())
+    a %= 10
 
-    data_num = a ** b
+    if a == 0:
+        num = 10
 
-    digit_list = list(str(data_num))
-    N = len(digit_list)-1
-    last_digit = digit_list[N]
+    elif a == 1 or 5 or 6:
+        num = a
 
-    print(int(last_digit))
+    else:
+        this_rot = rot[a]
+        num = this_rot[b % len(this_rot) - 1]
+
+    print(num)
