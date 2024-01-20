@@ -5,28 +5,25 @@ direct = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
 
 def bfs():
-    visited = [[0] * M for _ in range(N)]
+    Q = deque()
 
     for i in range(N):
         for j in range(M):
-            if modi_arr[i][j] == 2 and visited[i][j] == 0:
-
-                Q = deque()
-                visited[i][j] = 1
+            if modi_arr[i][j] == 2:
                 Q.append((i, j))
 
-                while Q:
-                    ci, cj = Q.popleft()
+    while Q:
+        ci, cj = Q.popleft()
 
-                    for di, dj in direct:
-                        ni = ci + di
-                        nj = cj + dj
+        for di, dj in direct:
+            ni = ci + di
+            nj = cj + dj
 
-                        if 0 <= ni < N and 0 <= nj < M:
-                            if modi_arr[ni][nj] == 0 and visited[ni][nj] == 0:
-                                Q.append((ni, nj))
-                                visited[ni][nj] = visited[ci][cj] + 1
-                                modi_arr[ni][nj] = 2
+            if 0 <= ni < N and 0 <= nj < M:
+                if modi_arr[ni][nj] == 0:
+                    Q.append((ni, nj))
+                    modi_arr[ni][nj] = 2
+    # print(modi_arr)
 
     this_safe = 0
 
@@ -48,22 +45,25 @@ max_safe = 0
 
 for i in range(N):
     for j in range(M):
-        if arr[i][j] == 0:
-            cnt += 1
+        if arr[i][j] == 0 and modi_arr[i][j] == 0:
             modi_arr[i][j] = 1
-        for k in range(i, N):
-            for m in range(j+1, M):
-                if arr[k][m] == 0:
-                    cnt += 1
-                    modi_arr[k][m] = 1
-                for n in range(k, N):
-                    for l in range(m+1, M):
-                        if arr[n][l] == 0:
-                            cnt += 1
-                            modi_arr[k][m] = 1
-                        if cnt == 3:
-                            this_cnt = bfs()
-                            max_safe = max(max_safe, this_cnt)
-                            modi_arr = copy.deepcopy(arr)
+
+            for k in range(N):
+                for m in range(M):
+                    if arr[k][m] == 0 and modi_arr[k][m] == 0:
+                        modi_arr[k][m] = 1
+
+                        for n in range(N):
+                            for l in range(M):
+                                if arr[n][l] == 0 and modi_arr[n][l] == 0:
+                                    modi_arr[n][l] = 1
+
+                                    # print(modi_arr)
+                                    this_cnt = bfs()
+                                    max_safe = max(max_safe, this_cnt)
+
+                                modi_arr[n][l] = 0
+                    modi_arr[k][m] = 0
+        modi_arr[i][j] = 0
 
 print(max_safe)
