@@ -51,11 +51,19 @@ for i in range(N):
         if arr[i][j] == 0:
             cnt += 1
             modi_arr[i][j] = 1
+        if cnt == 3:
+            this_cnt = bfs()
+            max_safe = max(max_safe, this_cnt)
+            modi_arr = copy.deepcopy(arr)
         for k in range(i, N):
             for m in range(j+1, M):
                 if arr[k][m] == 0:
                     cnt += 1
                     modi_arr[k][m] = 1
+                if cnt == 3:
+                    this_cnt = bfs()
+                    max_safe = max(max_safe, this_cnt)
+                    modi_arr = copy.deepcopy(arr)
                 for n in range(k, N):
                     for l in range(m+1, M):
                         if arr[n][l] == 0:
