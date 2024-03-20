@@ -47,6 +47,30 @@ for i in range(N):
     for j in range(M):
         if arr[i][j] == 0 and modi_arr[i][j] == 0:
             modi_arr[i][j] = 1
+<<<<<<< HEAD
+        if cnt == 3:
+            this_cnt = bfs()
+            max_safe = max(max_safe, this_cnt)
+            modi_arr = copy.deepcopy(arr)
+        for k in range(i, N):
+            for m in range(j+1, M):
+                if arr[k][m] == 0:
+                    cnt += 1
+                    modi_arr[k][m] = 1
+                if cnt == 3:
+                    this_cnt = bfs()
+                    max_safe = max(max_safe, this_cnt)
+                    modi_arr = copy.deepcopy(arr)
+                for n in range(k, N):
+                    for l in range(m+1, M):
+                        if arr[n][l] == 0:
+                            cnt += 1
+                            modi_arr[k][m] = 1
+                        if cnt == 3:
+                            this_cnt = bfs()
+                            max_safe = max(max_safe, this_cnt)
+                            modi_arr = copy.deepcopy(arr)
+=======
 
             for k in range(N):
                 for m in range(M):
@@ -65,5 +89,6 @@ for i in range(N):
                                 modi_arr[n][l] = 0
                     modi_arr[k][m] = 0
         modi_arr[i][j] = 0
+>>>>>>> 9b2b3c33b112d51efc50b197615f9f87d1f83b8a
 
 print(max_safe)
