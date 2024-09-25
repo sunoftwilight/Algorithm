@@ -1,10 +1,16 @@
+// function solution(array) {
+//     function compare(a, b) {
+//         return a - b;
+//     }
+    
+//     array.sort(compare);
+    
+//     var answer = array[Math.floor(array.length / 2)];
+//     return answer;
+// }
+
 function solution(array) {
-    function compare(a, b) {
-        return a - b;
-    }
+    var answer = array.sort((a, b) => a - b)[Math.floor(array.length / 2)];
     
-    array.sort(compare);
-    
-    var answer = array[Math.floor(array.length / 2)];
     return answer;
 }
