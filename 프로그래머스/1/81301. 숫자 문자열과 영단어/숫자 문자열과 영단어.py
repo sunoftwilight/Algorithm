@@ -12,8 +12,6 @@ def solution(s):
         'nine': '9',
     }
     
-    num_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    
     answer = ''
     
     idx = 0
@@ -21,7 +19,7 @@ def solution(s):
     while idx < len(s):
         tmp = idx
         
-        while s[tmp] not in num_list:
+        while s[tmp] not in num_dict.values():
             tmp += 1
             
             if num_dict.get(s[idx : tmp]):
