@@ -1,48 +1,26 @@
 def solution(msg):
     answer = []
-    idx_dict = {
-        'A': 1,
-        'B': 2,
-        'C': 3,
-        'D': 4,
-        'E': 5,
-        'F': 6,
-        'G': 7,
-        'H': 8,
-        'I': 9,
-        'J': 10,
-        'K': 11,
-        'L': 12,
-        'M': 13,
-        'N': 14,
-        'O': 15,
-        'P': 16,
-        'Q': 17,
-        'R': 18,
-        'S': 19,
-        'T': 20,
-        'U': 21,
-        'V': 22,
-        'W': 23,
-        'X': 24,
-        'Y': 25,
-        'Z': 26,
-    }
+    
+    alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    idx = list(range(1, 27))
+    idx_dict = {key: value for key, value in zip(alpha, idx)}
     
     new_idx = 27
     s, e = 0, 0
+    
     while e <= len(msg):
         if idx_dict.get(msg[s : e + 1]):
             if e == len(msg) - 1:
                 answer.append(idx_dict[msg[s : e + 1]])
                 break
+                
             e += 1
+            
         else:
             answer.append(idx_dict[msg[s:e]])
             idx_dict[msg[s:e+1]] = new_idx
+            
             new_idx += 1
             s = e
-        
-        
         
     return answer
