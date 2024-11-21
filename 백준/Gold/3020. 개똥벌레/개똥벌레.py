@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N, H = map(int, input().split())
 cave = [0] * H
 
