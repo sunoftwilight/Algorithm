@@ -1,20 +1,17 @@
-def counsel(day, pay):
-    global max_pay
-
-    if day == N:
-        max_pay = max(max_pay, pay)
-        return
-
-    if day + task[day][0] <= N:
-        counsel(day + task[day][0], pay + task[day][1])
-
-    counsel(day + 1, pay)
-
-
 N = int(input())
-task = [list(map(int, input().split())) for _ in range(N)]
-max_pay = 0
+counsel = [list(map(int, input().split())) for _ in range(N)]
 
-counsel(0, 0)
+dp = [False] * N
+dp[-1] = counsel[-1][1] if counsel[-1][0] == 1 else 0
 
-print(max_pay)
+for i in range(N-2, -1, -1):
+    if counsel[i][0] + i > N:
+        dp[i] = dp[i+1]
+
+    elif counsel[i][0] + i >= N:
+        dp[i] = max(dp[i+1], counsel[i][1])
+
+    else:
+        dp[i] = max(counsel[i][1] + dp[i + counsel[i][0]], dp[i+1])
+
+print(max(dp))
