@@ -8,7 +8,7 @@ for i in range(N-2, -1, -1):
     if counsel[i][0] + i > N:
         dp[i] = dp[i+1]
 
-    elif counsel[i][0] + i >= N:
+    elif counsel[i][0] + i == N:
         dp[i] = max(dp[i+1], counsel[i][1])
 
     else:
