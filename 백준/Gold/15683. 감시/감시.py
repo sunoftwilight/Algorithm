@@ -58,7 +58,6 @@ for i in range(N):
 
 min_hide = N * M
 
-tmp = copy.deepcopy(arr)
-observe(tmp, 0)
+observe(arr, 0)
 
 print(min_hide)
